@@ -42,4 +42,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function getUserById($id)
+    {
+        $url = "https://jsonplaceholder.typicode.com/users/" . $id;
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // Untuk bypass verify (tidak direkomendasikan untuk produksi)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+        ]);
+
+        $response = curl_exec($ch);
+
+        if ($response === false) {
+            echo "cURL Error: " . curl_error($ch);
+            curl_close($ch);
+            exit;
+        }
+
+        curl_close($ch);
+
+        // Dekode JSON menjadi array PHP
+        $data = json_decode($response, true);
+
+        return $data;
+    }
 }

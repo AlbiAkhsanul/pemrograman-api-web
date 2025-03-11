@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\DashboardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [PostController::class, 'index']);
+    Route::get('/{id}', [PostController::class, 'getPostById']);
+});
+
+Route::resource('/dashboard/posts', DashboardPostController::class);
