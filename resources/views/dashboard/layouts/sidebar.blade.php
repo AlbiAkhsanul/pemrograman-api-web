@@ -43,20 +43,10 @@
         <hr>
 
         <div class="dropdown ms-3 mb-3">
-          {{-- <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="http://source.unsplash.com/600x600?selfie-potrait" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>{{auth()->user()->username}}</strong>
-          </a> --}}
-          <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-1"></i>Settings</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-1"></i>Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <form action="/logout" method="post">
-              @csrf
-              <button type="submit" class="dropdown-item d-flex text-black" onclick="return confirm('Apakah anda yakin ingin logout?')"><i class="bi bi-door-closed me-1"></i>Logout</button>
-            </form></li>
-          </ul>
+          <form action="/logout" method="post">
+          @csrf
+          <button type="submit" class="dropdown-item d-flex text-black" onclick="return confirm('Apakah anda yakin ingin logout')"><i class="bi bi-door-closed me-1"></i>Logout</button>
+          </form>
         </div>
       </div>
     </div>

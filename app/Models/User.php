@@ -70,6 +70,7 @@ class User extends Authenticatable
         // Dekode JSON menjadi array PHP
         $data = json_decode($response, true);
 
+
         return $data;
     }
 }

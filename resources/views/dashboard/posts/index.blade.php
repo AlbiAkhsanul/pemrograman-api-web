@@ -18,10 +18,26 @@
       <tr>
         <th scope="col">No</th>
         <th scope="col">Tttle</th>
-        <th scope="col">Category</th>
         <th scope="col" style="text-align: center">Action</th>
       </tr>
     </thead>
+    <tbody>
+      @foreach ($data as $post)
+      <tr>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $post['title'] }}</td>
+          <td style="text-align: center">
+              <a href="/dashboard/posts/{{ $post['id'] }}" class="btn btn-info btn-sm"><i class="bi bi-eye-fill text-white"></i></a> 
+              <a href="/dashboard/posts/{{ $post['id'] }}/edit" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square text-white"></i></a>
+              <form action="/dashboard/posts/{{ $post['id'] }}" method="post" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus post ini?')"><i class="bi bi-trash3-fill"></i></button>
+              </form>
+          </td>
+      </tr>
+      @endforeach
+    </tbody>
   </table>
 </div>
 @endsection

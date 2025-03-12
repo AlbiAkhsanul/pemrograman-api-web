@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <h2 class="text-capitalize">{{ $dataPost['title'] }}</h2>
             <div class="d-flex fs-4 mb-2">
-                <p class="text-secondary">by: <a href="/blog?user={{ $dataUser['username'] }}" class="text-decoration-none text-black">{{ $dataUser['name'] }}</a> 
+                <p class="text-secondary">by: <span class="text-decoration-none text-black">{{ $dataUser['name'] }}</span></p>
             </div>
 
             <div class="my-2" style="max-width: 1000px; overflow: hidden;">
